@@ -69,9 +69,47 @@ code {
 .MuiStepIcon-root.MuiStepIcon-active {
   color: #EB5E28 !important;
 }
-
+/****** SUCCESS PAGE *****/
 .successIcon {
   font-size: 200px;
   color: green;
   margin-bottom: 10px;
+}
+/****** HOME PAGE *********/
+.homePageTitle {
+  font-size: 4rem !important;
+  font-weight: 900 !important;
+  line-height: 2 !important;
+  letter-spacing: -0.00833em;
+  color: #EB5E28 !important;
+  margin: 50px 0 80px 0 !important;
+}
+
+.homePageText {
+  margin-bottom: 100px !important;
+  font-size: 1.5rem !important;
+  font-weight: 300 !important;
+  line-height: 2 !important;
+  padding: 0 150px !important;
+}
+
+/******* GENRE - BUTTON *****/
+.clearButton {
+  width: 100%;
+  text-align: right;
+  color: lightgrey !important;
+  font-size: 10px;
+  padding-right: 10px !important;
+  cursor: pointer;
+}
+button {
+  min-width: 150px !important;
+}
+.buttonContainer {
+  margin-top: 100px !important;
+  padding: 50px;
+}
+
+.buttonMargin {
+  margin-right: 400px !important;
 }

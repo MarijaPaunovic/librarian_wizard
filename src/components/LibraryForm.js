@@ -29,6 +29,13 @@ export class LibraryForm extends Component {
         });
     }
 
+    // Homepage
+    homePage = () => {
+        this.setState({
+            step: 1
+        });
+    }
+
     // Handle fields change
     handleChange = input => e => {
         this.setState({
@@ -37,7 +44,7 @@ export class LibraryForm extends Component {
     }
     render() {
         const { step } = this.state;
-        const { subName} = this.state;
+        const { subName } = this.state;
         const values = { subName };
 
         switch (step) {
@@ -50,13 +57,15 @@ export class LibraryForm extends Component {
                     />
                 )
             case 2:
-                    return (
-                        <GenreStepper
-                            nextStep={this.nextStep}
-                            handleChange={this.handleChange}
-                            values={values}
-                        />
-                    )
+                return (
+                    <GenreStepper
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        homePage={this.homePage}
+                        handleChange={this.handleChange}
+                        values={values}
+                    />
+                )
             case 3:
                 return (
                     <SubgenreStep
@@ -65,24 +74,24 @@ export class LibraryForm extends Component {
                         values={values}
                     />
                 )
-                // case 4:
-                // return (
-                //     // <SubgenreStep
-                //     //     nextStep={this.nextStep}
-                //     //     handleChange={this.handleChange}
-                //     //     values={values}
-                //     // />
-                // )
+            // case 4:
+            // return (
+            //     // <SubgenreStep
+            //     //     nextStep={this.nextStep}
+            //     //     handleChange={this.handleChange}
+            //     //     values={values}
+            //     // />
+            // )
             case 5:
                 return <Success />
             default:
-            return (
-                <HomePage
+                return (
+                    <HomePage
                     // nextStep={this.nextStep}
                     // handleChange={this.handleChange}
                     // values={values}
-                />
-            )
+                    />
+                )
         }
 
     }

@@ -13,17 +13,17 @@ export class HomePage extends Component {
     }
 
     render() {
-        const { values, handleChange } = this.props;
+        // const { values, handleChange } = this.props;
 
         return (
             <div className='wizard-container'>
                 <div className='card wizard-card'>
                     <div className={styles.root}>
 
-                        <Typography variant="h2" gutterBottom>
+                        <Typography variant="h2" gutterBottom className='homePageTitle'>
                             Welcome to Library Wizard
                     </Typography>
-                        <Typography variant="subtitle1" gutterBottom>
+                        <Typography variant="subtitle1" gutterBottom className='homePageText'>
                             Wizard will alow you to navigate through various steps in order to choose or add a new book to the system.
                         </Typography>
                         <Button
