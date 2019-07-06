@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 import HomePage from './HomePage';
-import Genre from './Genre';
-// import Example1 from './Example1';
+// import Genre from './Genre';
+import GenreStepper from './GenreStepper';
+import SubgenreStep from './SubgenreStep'
+import AddNew from './AddNew';
+import Success from './Success'
 
 export class LibraryForm extends Component {
     state = {
         step: 1,
-        genre: '',
-        subgenre: '',
-        addGenre: '',
-        information: ''
+        subName: '',
     }
 
     // Proceed to next step
@@ -37,8 +37,8 @@ export class LibraryForm extends Component {
     }
     render() {
         const { step } = this.state;
-        const { genre, subgenre, addGenre, information } = this.state;
-        const values = { genre, subgenre, addGenre, information };
+        const { subName} = this.state;
+        const values = { subName };
 
         switch (step) {
             case 1:
@@ -51,18 +51,30 @@ export class LibraryForm extends Component {
                 )
             case 2:
                     return (
-                        <Genre
+                        <GenreStepper
                             nextStep={this.nextStep}
                             handleChange={this.handleChange}
                             values={values}
                         />
                     )
             case 3:
-                return <h1>Add Subgenre</h1>
-            case 4:
-                return <h1>Information</h1>
+                return (
+                    <SubgenreStep
+                        nextStep={this.nextStep}
+                        handleChange={this.handleChange}
+                        values={values}
+                    />
+                )
+                // case 4:
+                // return (
+                //     // <SubgenreStep
+                //     //     nextStep={this.nextStep}
+                //     //     handleChange={this.handleChange}
+                //     //     values={values}
+                //     // />
+                // )
             case 5:
-                return <h1>Success</h1>
+                return <Success />
             default:
             return (
                 <HomePage

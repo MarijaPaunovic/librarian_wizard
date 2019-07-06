@@ -9,7 +9,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "react-stepper-wizard": "^1.1.5",
     "reactstrap": "^8.0.0"
   },
   "scripts": {

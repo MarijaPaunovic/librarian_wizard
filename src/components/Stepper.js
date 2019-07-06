@@ -9,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 
 import GenreStepper from './GenreStepper';
 import SubgenreStep from './SubgenreStep'
+import AddNew from './AddNew';
+import Information from './Information';
+import Success from './Success'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 
 function getSteps() {
-    return ['Genre', 'Subgenre', 'Add new subgenre', 'Information'];
+    return ['Genre', 'Subgenre', 'Add new subgenre', 'Information', 'Success'];
 }
 
 export default function MyStepper() {
@@ -97,9 +100,23 @@ export default function MyStepper() {
                     </>
                 )
             case 2:
-                return 'Step 3: This is the bit I really care about!';
+                return (
+                    <>
+                    <AddNew />
+                    </>
+                )
             case 3:
-                return 'Step 3: Information';
+                return (
+                    <>
+                    <Information />
+                    </>
+                )
+                case 4:
+                return (
+                    <>
+                    <Success />
+                    </>
+                )
             default:
                 return 'Unknown step';
         }

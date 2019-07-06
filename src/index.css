@@ -50,7 +50,28 @@ code {
   color: white !important;
   background-color: #EB5E28 !important;
 }
+
+.MuiButton-containedPrimary {
+  color: #fff;
+  background-color: #EB5E28 !important;
+}
+
+.MuiButton-outlinedPrimary {
+  color: rgb(224, 85, 31) !important;
+  border: 1px solid #EB5E28 !important;
+}
+
 .highlight {
   color: white !important;
   background-color: #EB5E28 !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: #EB5E28 !important;
+}
+
+.successIcon {
+  font-size: 200px;
+  color: green;
+  margin-bottom: 10px;
 }
