@@ -27,6 +27,14 @@ code {
     width: 900px !important;
 }}
 
+.MuiPaper-elevation1 {
+  min-height: 500px !important; 
+}
+
+.makeStyles-buttons-6 {
+  margin-top: 20px !important;
+}
+
 .wizard-container {
   padding-top: 100px;
   z-index: 3;

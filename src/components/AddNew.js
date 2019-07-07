@@ -9,16 +9,6 @@ export class AddNew extends Component {
         checkedG: true,
     }
 
-    // continue = e => {
-    //     e.preventDefault();
-    //     this.props.nextStep();
-    // }
-
-    // back = e => {
-    //     e.preventDefault();
-    //     this.props.prevStep();
-    // }
-
     handleChange = name => event => {
         const state = this.state;
         this.setState({ ...state, [name]: event.target.checked });
@@ -26,7 +16,7 @@ export class AddNew extends Component {
 
 
     render() {
-        // const { values, handleChange } = this.props;
+        const { value1, value2, handleChange } = this.props;
 
         return (
             <>
@@ -34,23 +24,18 @@ export class AddNew extends Component {
                         id="outlined-name"
                         fullWidth
                         label="Subgenre name"
-
-                        
-                        // value={values.name}
-                        // onChange={handleChange('subName')}
+                        onChange={handleChange('subName')}
+                        defaultValue={value1.subName}
                         margin="normal"
                         variant="outlined"
-                    // hintText='Subgenre Name'
-                    // floatingLabelText='First Name'
-                    // onChange={handleChange('subName')}
-                    // defaultValue={values.subName}
                     />
                     <br />
                     <TextField
                         id="outlined-dense-multiline"
                         fullWidth
                         label="Type the description..."
-                        // className={clsx(classes.textField, classes.dense)}
+                        onChange={handleChange('subDescription')}
+                        defaultValue={value2.subDescription}
                         margin="dense"
                         variant="outlined"
                         multiline

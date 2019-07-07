@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 
 // import HomePage from './HomePage';
@@ -66,16 +66,73 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const steps = ['Genre', 'Subgenre', 'Add new subgenre', 'Information'];
+
+// export class LibraryForm extends Component {
+export default function LibraryForm() {
+    const classes = useStyles();
+    const [activeStep, setActiveStep] = React.useState(0);
+
+    // const [subName, setSubName] = React.useState('');
+    // const [subDescription, setSubDescription] = React.useState('');
+    const [userInput, setUserInput] = useReducer(
+        (state, newState) => ({...state, ...newState}),
+        {
+            subName: '',
+            subDescription: '',
+        }
+    )
+
+    // Proceed to next step
+    const handleNext = () => {
+        setActiveStep(activeStep + 1);
+    };
+
+    // Go to prev step
+    const handleBack = () => {
+        setActiveStep(activeStep - 1);
+    };
+
+    // Back to home page
+    const handleReset = () => {
+        setActiveStep(0);
+    }
+
+    // // Handle sub name on input
+    // const handleSubName = input => e => {
+    //     setSubName(
+    //         [input]=e.target.value
+    //     )
+    // }
+
+    // // Handle sub description on input
+    // const handleSubDescription = input => e => {
+    //     setSubDescription(
+    //         [input]=e.target.value
+    //     )
+    // }
+    
+    // Handle input change
+    const handleChange = e => {
+        const { name, value } = e.target;
+ 
+        setUserInput( prevState => ({
+            ...prevState,
+            [name] : value
+        }));
+    }
+
+    const steps = ['Genre', 'Subgenre', 'Add new subgenre', 'Information'];
 
 function getStepContent(step) {
+    const { subName, subDescription } = userInput;
+
     switch (step) {
         case 0:
             return <GenreStepper />;
         case 1:
             return <SubgenreStep />;
         case 2:
-            return <AddNew />;
+            return <AddNew  handleChange={handleChange} value1={subName} value2={subDescription} />;
         case 3:
             return <Information />;
         case 4:
@@ -85,57 +142,32 @@ function getStepContent(step) {
     }
 }
 
-// export class LibraryForm extends Component {
-export default function LibraryForm() {
-    const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
-    // const state = {
-    //     step: 1,
-    //     subName: '',
+
+    
+    // const nextStep = () => {
+    //     const { step } = this.state;
+    //     this.setState({
+    //         step: step + 1
+    //     });
     // }
 
+    // // Go to prev step
+    // const prevStep = () => {
+    //     const { step } = this.state;
+    //     this.setState({
+    //         step: step - 1
+    //     });
+    // }
 
-    const handleNext = () => {
-        setActiveStep(activeStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-    }
-
-    // Proceed to next step
-    const nextStep = () => {
-        const { step } = this.state;
-        this.setState({
-            step: step + 1
-        });
-    }
-
-    // Go to prev step
-    const prevStep = () => {
-        const { step } = this.state;
-        this.setState({
-            step: step - 1
-        });
-    }
-
-    // Homepage
-    const homePage = () => {
-        this.setState({
-            step: 1
-        });
-    }
+    // // Homepage
+    // const homePage = () => {
+    //     this.setState({
+    //         step: 1
+    //     });
+    // }
 
     // Handle fields change
-    const handleChange = input => e => {
-        this.setState({
-            [input]: e.target.value
-        })
-    }
+    
 
     const close = e => {
         e.preventDefault();
