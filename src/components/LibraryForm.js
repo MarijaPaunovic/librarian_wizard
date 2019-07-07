@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // import HomePage from './HomePage';
@@ -10,6 +10,7 @@ import Information from './Information'
 // import Success from './Success'
 
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
@@ -22,12 +23,13 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 // import AddressForm from './Checkout/AddressForm';
 // import PaymentForm from './Checkout/PaymentForm';
-import Review from './Checkout//Review';
+import Review from './Checkout/Review';
+import { withStyles, styled } from '@material-ui/styles';
 // import SubgenreStep from './SubgenreStep';
 
 
 const useStyles = makeStyles(theme => ({
-    primary: { 
+    primary: {
         color: 'deepOrange[500]'
     },
     appBar: {
@@ -66,234 +68,157 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+class LibraryForm extends Component {
 
-// export class LibraryForm extends Component {
-export default function LibraryForm() {
-    const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
-
-    // const [subName, setSubName] = React.useState('');
-    // const [subDescription, setSubDescription] = React.useState('');
-    const [userInput, setUserInput] = useReducer(
-        (state, newState) => ({...state, ...newState}),
-        {
-            subName: '',
-            subDescription: '',
-        }
-    )
+    state = {
+        activeStep: 0,
+        subName: '',
+        subDescription: '',
+    }
 
     // Proceed to next step
-    const handleNext = () => {
-        setActiveStep(activeStep + 1);
+    handleNext = () => {
+        const { activeStep } = this.state;
+        this.setState({
+            activeStep: activeStep + 1
+        });
     };
 
     // Go to prev step
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
+    handleBack = () => {
+        const { activeStep } = this.state;
+        this.setState({
+            activeStep: activeStep - 1
+        });
     };
 
     // Back to home page
-    const handleReset = () => {
-        setActiveStep(0);
+    handleReset = () => {
+        this.setState({
+            activeStep: 0
+        });
     }
 
-    // // Handle sub name on input
-    // const handleSubName = input => e => {
-    //     setSubName(
-    //         [input]=e.target.value
-    //     )
-    // }
-
-    // // Handle sub description on input
-    // const handleSubDescription = input => e => {
-    //     setSubDescription(
-    //         [input]=e.target.value
-    //     )
-    // }
-    
     // Handle input change
-    const handleChange = e => {
-        const { name, value } = e.target;
- 
-        setUserInput( prevState => ({
-            ...prevState,
-            [name] : value
-        }));
+    handleChange = input => e => {
+        this.setState({
+            [input]: e.target.value
+        });
     }
 
-    const steps = ['Genre', 'Subgenre', 'Add new subgenre', 'Information'];
+    getStepContent = (step) => {
+        const { subName, subDescription } = this.state;
+        const values = { subName, subDescription }
 
-function getStepContent(step) {
-    const { subName, subDescription } = userInput;
-
-    switch (step) {
-        case 0:
-            return <GenreStepper />;
-        case 1:
-            return <SubgenreStep />;
-        case 2:
-            return <AddNew  handleChange={handleChange} value1={subName} value2={subDescription} />;
-        case 3:
-            return <Information />;
-        case 4:
-            return <Review />;
-        default:
-            throw new Error('Unknown step');
-    }
-}
-
-
-    
-    // const nextStep = () => {
-    //     const { step } = this.state;
-    //     this.setState({
-    //         step: step + 1
-    //     });
-    // }
-
-    // // Go to prev step
-    // const prevStep = () => {
-    //     const { step } = this.state;
-    //     this.setState({
-    //         step: step - 1
-    //     });
-    // }
-
-    // // Homepage
-    // const homePage = () => {
-    //     this.setState({
-    //         step: 1
-    //     });
-    // }
-
-    // Handle fields change
-    
-
-    const close = e => {
-        e.preventDefault();
-        this.props.homePage();
+        switch (step) {
+            case 0:
+                return <GenreStepper />;
+            case 1:
+                return <SubgenreStep />;
+            case 2:
+                return <AddNew handleChange={this.handleChange} values={values} />;
+            case 3:
+                return <Information />;
+            case 4:
+                return <Review />;
+            default:
+                throw new Error('Unknown step');
+        }
     }
 
-    // render() {
-    // const { step } = this.state;
-    // const { subName } = this.state;
-    // const values = { subName };
 
-    //     switch (step) {
-    //         case 1:
-    //             return (
-    //                 <HomePage
-    //                     nextStep={this.nextStep}
-    //                     handleChange={this.handleChange}
-    //                     values={values}
-    //                 />
-    //             )
-    //         case 2:
-    //             return (
-    //                 <GenreStepper
-    //                     nextStep={this.nextStep}
-    //                     prevStep={this.prevStep}
-    //                     homePage={this.homePage}
-    //                     handleChange={this.handleChange}
-    //                     values={values}
-    //                 />
-    //             )
-    //         case 3:
-    //             return (
-    //                 <SubgenreStep
-    //                     nextStep={this.nextStep}
-    //                     handleChange={this.handleChange}
-    //                     values={values}
-    //                 />
-    //             )
-    //         // case 4:
-    //         // return (
-    //         //     // <SubgenreStep
-    //         //     //     nextStep={this.nextStep}
-    //         //     //     handleChange={this.handleChange}
-    //         //     //     values={values}
-    //         //     // />
-    //         // )
-    //         case 5:
-    //             return <Success />
-    //         default:
-    //             throw new Error('Unknown step');
-    //     }
+    render(props) {
+        const steps = ['Genre', 'Subgenre', 'Add new subgenre', 'Information'];
+        // const classes = useStyles();
+        const { activeStep } = this.state;
+        // const { classes } = this.props;
 
-    // }
+        return (
+            <>
+                <React.Fragment>
+                    <main 
+                    // className={classes.layout}
+                    >
+                        <Paper 
+                        className={useStyles.paper}
+                        >
 
-    return (
-        <React.Fragment>
-            <main className={classes.layout}>
-                <Paper className={classes.paper}>
-
-                    <div className='clearButton'>
-                        <Link to="/">
-                            <i className="material-icons clearButton">clear</i>
-                        </Link>
-                    </div>
+                            <div className='clearButton'>
+                                <Link to="/">
+                                    <i className="material-icons clearButton">clear</i>
+                                </Link>
+                            </div>
 
 
-                    <Typography component="h1" variant="h4" align="center" className='titlePage'>
-                        Add book - New book
+                            <Typography component="h1" variant="h4" align="center" className='titlePage'>
+                                Add book - New book
                     </Typography>
-                    <Stepper activeStep={activeStep} className={classes.stepper}>
-                        {steps.map(label => (
-                            <Step key={label}>
-                                <StepLabel>{label}</StepLabel>
-                            </Step>
-                        ))}
-                    </Stepper>
-                    <React.Fragment>
-                        {activeStep === steps.length ? (
+                            <Stepper activeStep={activeStep} 
+                            // className={useStyles.stepper}
+                            >
+                                {steps.map(label => (
+                                    <Step key={label}>
+                                        <StepLabel>{label}</StepLabel>
+                                    </Step>
+                                ))}
+                            </Stepper>
                             <React.Fragment>
-                                <div className='wizard-container success'>
-                                    <Typography gutterBottom>
-                                        <i className="material-icons successIcon">
-                                            check_circle
+                                {activeStep === steps.length ? (
+                                    <React.Fragment>
+                                        <div className='wizard-container success'>
+                                            <Typography gutterBottom>
+                                                <i className="material-icons successIcon">
+                                                    check_circle
                                         </i>
+                                            </Typography>
+
+                                            <Typography variant="h6" gutterBottom>
+                                                Book added successfully
                                     </Typography>
 
-                                    <Typography variant="h6" gutterBottom>
-                                        Book added successfully
-                                    </Typography>
-
-                                    <Button
-                                        variant="contained"
-                                        className='button-color'
-                                        onClick={handleReset}
-                                        >
-                                        Add another book
+                                            <Button
+                                                variant="contained"
+                                                className='button-color'
+                                                onClick={this.handleReset}
+                                            >
+                                                Add another book
                                     </Button>
-                                </div>
-                            </React.Fragment>
-                        ) : (
-                                <React.Fragment>
-                                    {getStepContent(activeStep)}
-                                    <div className={classes.buttons}>
-                                        {activeStep !== 0 && (
-                                            <Button onClick={handleBack} className={classes.button}>
-                                                Back
+                                        </div>
+                                    </React.Fragment>
+                                ) : (
+                                        <React.Fragment>
+                                            {this.getStepContent(activeStep)}
+                                            <div 
+                                            // className={useStyles.buttons}
+                                            >
+                                                {activeStep !== 0 && (
+                                                    <Button onClick={this.handleBack}
+                                                    // className={useStyles.button}
+                                                    >
+                                                        Back
                                              </Button>
-                                        )}
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={handleNext}
-                                            className={classes.button}
-                                        >
-                                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                        </Button>
-                                    </div>
-                                </React.Fragment>
-                            )}
-                    </React.Fragment>
-                </Paper>
+                                                )}
+                                                <Button
+                                                    variant="contained"
+                                                    color="primary"
+                                                    onClick={this.handleNext}
+                                                    // className={useStyles.button}
+                                                >
+                                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                                </Button>
+                                            </div>
+                                        </React.Fragment>
+                                    )}
+                            </React.Fragment>
+                        </Paper>
 
-            </main>
-        </React.Fragment>
-    );
+                    </main>
+                </React.Fragment>
+            </>
+        );
+    }
 }
 
 
-// export default LibraryForm
+
+export default LibraryForm

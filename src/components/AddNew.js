@@ -16,7 +16,7 @@ export class AddNew extends Component {
 
 
     render() {
-        const { value1, value2, handleChange } = this.props;
+        const { values, handleChange } = this.props;
 
         return (
             <>
@@ -25,7 +25,7 @@ export class AddNew extends Component {
                         fullWidth
                         label="Subgenre name"
                         onChange={handleChange('subName')}
-                        defaultValue={value1.subName}
+                        defaultValue={values.subName}
                         margin="normal"
                         variant="outlined"
                     />
@@ -35,7 +35,7 @@ export class AddNew extends Component {
                         fullWidth
                         label="Type the description..."
                         onChange={handleChange('subDescription')}
-                        defaultValue={value2.subDescription}
+                        defaultValue={values.subDescription}
                         margin="dense"
                         variant="outlined"
                         multiline
