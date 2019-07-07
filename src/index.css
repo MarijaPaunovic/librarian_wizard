@@ -9,7 +9,6 @@ body {
   background: url("./media/library_back.jpg");
   background-size: cover;
   background-attachment: fixed;
-
 }
 
 code {
@@ -23,9 +22,15 @@ code {
   box-sizing: border-box;
 }
 
+@media (min-width: 632px){
+.makeStyles-layout-3 {
+    width: 900px !important;
+}}
+
 .wizard-container {
   padding-top: 100px;
   z-index: 3;
+  text-align: center;
 }
 
 .wizard-card {
@@ -33,12 +38,13 @@ code {
   width: 50%;
   margin: 0 auto;
   box-shadow: 0 20px 16px -15px rgba(0, 0, 0, 0.57);
+  text-align: center;
 }
 
 .card {
   border-radius: 6px;
   box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #252422;
   padding: 10px 0;
   margin-bottom: 20px;
@@ -48,40 +54,52 @@ code {
 
 .button-color {
   color: white !important;
-  background-color: #EB5E28 !important;
+  background-color: #eb5e28 !important;
 }
 
 .MuiButton-containedPrimary {
   color: #fff;
-  background-color: #EB5E28 !important;
+  background-color: #eb5e28 !important;
 }
 
 .MuiButton-outlinedPrimary {
   color: rgb(224, 85, 31) !important;
-  border: 1px solid #EB5E28 !important;
+  border: 1px solid #eb5e28 !important;
 }
 
 .highlight {
   color: white !important;
-  background-color: #EB5E28 !important;
+  background-color: #eb5e28 !important;
 }
 
 .MuiStepIcon-root.MuiStepIcon-active {
-  color: #EB5E28 !important;
+  color: #eb5e28 !important;
 }
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: green !important;
+}
+
 /****** SUCCESS PAGE *****/
 .successIcon {
   font-size: 200px;
   color: green;
   margin-bottom: 10px;
 }
+.success {
+  padding-top: 0 !important;
+  padding-bottom: 80px !important;
+}
 /****** HOME PAGE *********/
+.homePageButton {
+  text-decoration: none;
+}
+
 .homePageTitle {
   font-size: 4rem !important;
   font-weight: 900 !important;
   line-height: 2 !important;
   letter-spacing: -0.00833em;
-  color: #EB5E28 !important;
+  color: #eb5e28 !important;
   margin: 50px 0 80px 0 !important;
 }
 
@@ -95,13 +113,16 @@ code {
 
 /******* GENRE - BUTTON *****/
 .clearButton {
-  width: 100%;
-  text-align: right;
+  text-align: right !important;
   color: lightgrey !important;
-  font-size: 10px;
-  padding-right: 10px !important;
+  font-size: 20px;
   cursor: pointer;
 }
+.titlePage {
+  color: #9a9a9a !important;
+  padding: 20px;
+}
+
 button {
   min-width: 150px !important;
 }
@@ -112,4 +133,9 @@ button {
 
 .buttonMargin {
   margin-right: 400px !important;
+}
+
+/***** Add New *****/
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: #eb5e28 !important;
 }

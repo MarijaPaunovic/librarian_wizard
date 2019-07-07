@@ -33,7 +33,7 @@ export class Information extends Component {
                 <TextField
                     id="outlined-full-width"
                     label="Book Title"
-                    style={{ margin: 8 }}
+                    // style={{ margin: 8 }}
                     placeholder="Book title"
                     // helperText="Full width!"
                     fullWidth
@@ -47,7 +47,7 @@ export class Information extends Component {
                 <TextField
                     id="outlined-full-width"
                     label="Author"
-                    style={{ margin: 8 }}
+                    // style={{ margin: 8 }}
                     placeholder="Author"
                     fullWidth
                     margin="normal"
@@ -60,7 +60,7 @@ export class Information extends Component {
                 <TextField
                     id="outlined-full-width"
                     label="ISBN"
-                    style={{ margin: 8 }}
+                    // style={{ margin: 8 }}
                     placeholder="ISBN"
                     fullWidth
                     margin="normal"
@@ -73,7 +73,7 @@ export class Information extends Component {
                 <TextField
                     id="outlined-full-width"
                     label="Publisher"
-                    style={{ margin: 8 }}
+                    // style={{ margin: 8 }}
                     placeholder="Publisher"
                     fullWidth
                     margin="normal"
@@ -173,6 +173,7 @@ export class Information extends Component {
                 <TextField
                     id="outlined-dense-multiline"
                     label="Description"
+                    fullWidth
                     // className={clsx(classes.textField, classes.dense)}
                     margin="dense"
                     variant="outlined"

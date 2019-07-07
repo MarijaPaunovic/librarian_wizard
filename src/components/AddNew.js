@@ -30,23 +30,12 @@ export class AddNew extends Component {
 
         return (
             <>
-                    {/* <TextField
-                        id="outlined-full-width"
-                        label="Subgenre name"
-                        style={{ margin: 8 }}
-                        placeholder="Subgenre name"
-                        // helperText="Full width!"
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    /> */}
-                    <TextField
+                     <TextField
                         id="outlined-name"
+                        fullWidth
                         label="Subgenre name"
-                        // className={classes.textField}
+
+                        
                         // value={values.name}
                         // onChange={handleChange('subName')}
                         margin="normal"
@@ -59,6 +48,7 @@ export class AddNew extends Component {
                     <br />
                     <TextField
                         id="outlined-dense-multiline"
+                        fullWidth
                         label="Type the description..."
                         // className={clsx(classes.textField, classes.dense)}
                         margin="dense"
