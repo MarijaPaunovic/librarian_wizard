@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
 
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+
 
 export class Information extends Component {
     state = {
         checkedG: true,
     }
 
-    // continue = e => {
-    //     e.preventDefault();
-    //     this.props.nextStep();
-    // }
-
-    // back = e => {
-    //     e.preventDefault();
-    //     this.props.prevStep();
-    // }
-
     handleChange = name => event => {
         const state = this.state;
         this.setState({ ...state, [name]: event.target.checked });
     };
 
-
     render() {
-        // const { values, handleChange } = this.props;
+        const { values, handleChange } = this.props;
 
         return (
             <>
+            <React.Fragment>
+            <Grid container spacing={3}>
+
+            <Grid item xs={12} fullWidth>
+                <Typography variant="h6" gutterBottom>
+                    Information about new book
+                </Typography>
+            </Grid>
+
+            <Grid item xs={12} fullWidth>
                 <TextField
                     id="outlined-full-width"
                     label="Book Title"
-                    // style={{ margin: 8 }}
                     placeholder="Book title"
-                    // helperText="Full width!"
+                    onChange={handleChange('bookTitle')}
+                    defaultValue={values.bookTitle}
                     fullWidth
                     margin="normal"
                     variant="outlined"
@@ -43,12 +43,16 @@ export class Information extends Component {
                         shrink: true,
                     }}
                 />
-                <br />
+                </Grid>
+
+                <Grid item xs={12} fullWidth>
                 <TextField
                     id="outlined-full-width"
                     label="Author"
                     // style={{ margin: 8 }}
                     placeholder="Author"
+                    onChange={handleChange('author')}
+                    defaultValue={values.author}
                     fullWidth
                     margin="normal"
                     variant="outlined"
@@ -56,10 +60,13 @@ export class Information extends Component {
                         shrink: true,
                     }}
                 />
-                <br />
+                </Grid>
+                <Grid item xs={12} fullWidth>
                 <TextField
                     id="outlined-full-width"
                     label="ISBN"
+                    onChange={handleChange('isbn')}
+                    defaultValue={values.isbn}
                     // style={{ margin: 8 }}
                     placeholder="ISBN"
                     fullWidth
@@ -69,12 +76,16 @@ export class Information extends Component {
                         shrink: true,
                     }}
                 />
-                <br />
+                </Grid>
+
+                <Grid item xs={12} fullWidth>
                 <TextField
                     id="outlined-full-width"
                     label="Publisher"
                     // style={{ margin: 8 }}
                     placeholder="Publisher"
+                    onChange={handleChange('publisher')}
+                    defaultValue={values.publisher}
                     fullWidth
                     margin="normal"
                     variant="outlined"
@@ -82,106 +93,90 @@ export class Information extends Component {
                         shrink: true,
                     }}
                 />
-                <br />
+                </Grid>
+
+                <Grid item xs={8} justify='flex-start' fullWidth>
                 <TextField
-                    id="outlined-name"
-                    label="Data publisher"
-                    // className={classes.textField}
-                    // value={values.name}
-                    // onChange={handleChange('subName')}
+                    id="date"
+                    label="Date published"
+                    type="date"
+                    defaultValue="2000-12-31"
+                    onChange={handleChange('datePublished')}
                     margin="normal"
                     variant="outlined"
-                // hintText='Subgenre Name'
-                // floatingLabelText='First Name'
-                // onChange={handleChange('subName')}
-                // defaultValue={values.subName}
+                    className='columnWidth'
                 />
-                <br />
+                </Grid>
+                <br/>
+
+                <Grid item xs={8} justify='flex-start' fullWidth>
                 <TextField
                     id="outlined-number"
                     label="Number of pages"
-                    // value={values.age}
-                    // onChange={handleChange('age')}
-                    type="number"
-                    // className={classes.textField}
+                    onChange={handleChange('numberOfPages')}
+                    defaultValue={values.numberOfPages}
                     InputLabelProps={{
                         shrink: true,
                     }}
                     margin="normal"
                     variant="outlined"
                 />
-                <br />
+                </Grid>
+
+                <Grid item xs={8} justify='flex-start' fullWidth>
                 <TextField
-                    id="outlined-select-currency"
-                    select
-                    label="Select"
-                    // className={classes.textField}
-                    // value={values.currency}
-                    // onChange={handleChange('currency')}
-                    // SelectProps={{
-                    //     MenuProps: {
-                    //         className: classes.menu,
-                    //     },
-                    // }}
-                    // helperText="Please select your currency"
+                    id="outlined-name"
+                    label="Format"
+                    onChange={handleChange('format')}
+                    defaultValue={values.format}
                     margin="normal"
                     variant="outlined"
-                >
-                    {/* {currencies.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))} */}
-                </TextField>
-                <br />
+                    className='columnWidth'
+                />
+                </Grid>
+                <br/>
+
+                
+                <Grid item xs={6} justify='flex-start' fullWidth>
                 <TextField
                     id="outlined-name"
                     label="Edition"
-                    // className={classes.textField}
-                    // value={values.name}
-                    // onChange={handleChange('subName')}
+                    onChange={handleChange('edition')}
+                    defaultValue={values.edition}
                     margin="normal"
                     variant="outlined"
-                // hintText='Subgenre Name'
-                // floatingLabelText='First Name'
-                // onChange={handleChange('subName')}
-                // defaultValue={values.subName}
+                    className='columnWidth'
                 />
+                </Grid>
+
+                <Grid item xs={6} justify='space-evenly' fullWidth>
                 <TextField
-                    id="outlined-select-currency"
-                    select
+                    id="outlined-name"
                     label="Edition language"
-                    // className={classes.textField}
-                    // value={values.currency}
-                    // onChange={handleChange('currency')}
-                    // SelectProps={{
-                    //     MenuProps: {
-                    //         className: classes.menu,
-                    //     },
-                    // }}
-                    // helperText="Please select your currency"
+                    onChange={handleChange('editionLanguage')}
+                    defaultValue={values.editionLanguage}
                     margin="normal"
                     variant="outlined"
-                >
-                    {/* {currencies.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))} */}
-                </TextField>
-                <br />
+                    className='columnWidth'
+                />
+                </Grid>
+
+                <Grid item xs={12} fullWidth>
                 <TextField
                     id="outlined-dense-multiline"
                     label="Description"
                     fullWidth
-                    // className={clsx(classes.textField, classes.dense)}
+                    onChange={handleChange('description')}
+                    defaultValue={values.description}
                     margin="dense"
                     variant="outlined"
                     multiline
                     rowsMax="4"
                 />
-                <br />
-                
+                </Grid>
+
+                </Grid>
+                </React.Fragment>
             </>
         )
     }

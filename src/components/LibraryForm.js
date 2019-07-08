@@ -1,79 +1,39 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+ import Container from '@material-ui/core/Container';
+ import Box from '@material-ui/core/Box';
 
-// import HomePage from './HomePage';
-// import Genre from './Genre';
 import GenreStepper from './GenreStepper';
-import SubgenreStep from './SubgenreStep'
+import SubgenreStep from './SubgenreStep';
 import AddNew from './AddNew';
 import Information from './Information'
-// import Success from './Success'
 
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-// import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-// import AddressForm from './Checkout/AddressForm';
-// import PaymentForm from './Checkout/PaymentForm';
-import Review from './Checkout/Review';
-import { withStyles, styled } from '@material-ui/styles';
-// import SubgenreStep from './SubgenreStep';
 
 
-const useStyles = makeStyles(theme => ({
-    primary: {
-        color: 'deepOrange[500]'
-    },
-    appBar: {
-        position: 'relative',
-    },
-    layout: {
-        width: 'auto',
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-            width: 600,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
-    },
-    paper: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3),
-        padding: theme.spacing(2),
-        [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-            marginTop: theme.spacing(6),
-            marginBottom: theme.spacing(6),
-            padding: theme.spacing(3),
-        },
-    },
-    stepper: {
-        padding: theme.spacing(3, 0, 5),
-    },
-    buttons: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-    },
-    button: {
-        marginTop: theme.spacing(3),
-        marginLeft: theme.spacing(1),
-    },
-}));
 
 class LibraryForm extends Component {
 
     state = {
         activeStep: 0,
+        // Add new book
         subName: '',
         subDescription: '',
+        // Information about new book
+        bookTitle: '',
+        author: '',
+        isbn: '',
+        publisher: '',
+        datePublished: '',
+        numberOfPages: 0,
+        format: '',
+        edition: '',
+        editionLanguage: '',
+        description: '',
     }
 
     // Proceed to next step
@@ -107,8 +67,8 @@ class LibraryForm extends Component {
     }
 
     getStepContent = (step) => {
-        const { subName, subDescription } = this.state;
-        const values = { subName, subDescription }
+        const { subName, subDescription, bookTitle, author, isbn, publisher, datePublished, numberOfPages, format, edition, editionLanguage, description } = this.state;
+        const values = { subName, subDescription, bookTitle, author, isbn, publisher, datePublished, numberOfPages, format, edition, editionLanguage, description }
 
         switch (step) {
             case 0:
@@ -118,9 +78,7 @@ class LibraryForm extends Component {
             case 2:
                 return <AddNew handleChange={this.handleChange} values={values} />;
             case 3:
-                return <Information />;
-            case 4:
-                return <Review />;
+                return <Information handleChange={this.handleChange} values={values} />;
             default:
                 throw new Error('Unknown step');
         }
@@ -128,7 +86,7 @@ class LibraryForm extends Component {
 
 
     render(props) {
-        const steps = ['Genre', 'Subgenre', 'Add new subgenre', 'Information'];
+        const steps = ['Genre', 'Subgenre', 'Add new subgenre (Optional)', 'Information (Optional)'];
         // const classes = useStyles();
         const { activeStep } = this.state;
         // const { classes } = this.props;
@@ -136,12 +94,11 @@ class LibraryForm extends Component {
         return (
             <>
                 <React.Fragment>
-                    <main 
-                    // className={classes.layout}
-                    >
-                        <Paper 
-                        className={useStyles.paper}
-                        >
+                <Container spacing={3} className='wizard-container'>
+                <div className='card wizard-card'>
+                        {/* <Paper 
+                        // className={useStyles.paper}
+                        > */}
 
                             <div className='clearButton'>
                                 <Link to="/">
@@ -154,7 +111,7 @@ class LibraryForm extends Component {
                                 Add book - New book
                     </Typography>
                             <Stepper activeStep={activeStep} 
-                            // className={useStyles.stepper}
+                            alternativeLabel
                             >
                                 {steps.map(label => (
                                     <Step key={label}>
@@ -188,13 +145,16 @@ class LibraryForm extends Component {
                                 ) : (
                                         <React.Fragment>
                                             {this.getStepContent(activeStep)}
-                                            <div 
-                                            // className={useStyles.buttons}
-                                            >
+                                            <Box display="flex" justifyContent="flex-end">
                                                 {activeStep !== 0 && (
-                                                    <Button onClick={this.handleBack}
-                                                    // className={useStyles.button}
+                                                    <Button 
+                                                    variant="outlined"
+                                                    onClick={this.handleBack}
+                                                    className='buttons backButton'
                                                     >
+                                                    <i className="material-icons">
+                                                        keyboard_arrow_left &nbsp; 
+                                                    </i>
                                                         Back
                                              </Button>
                                                 )}
@@ -202,17 +162,18 @@ class LibraryForm extends Component {
                                                     variant="contained"
                                                     color="primary"
                                                     onClick={this.handleNext}
-                                                    // className={useStyles.button}
+                                                    className='buttons'
                                                 >
                                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                                 </Button>
-                                            </div>
+                                            </Box>
                                         </React.Fragment>
                                     )}
                             </React.Fragment>
-                        </Paper>
+                        {/* </Paper> */}
 
-                    </main>
+                    </div>
+            </Container>
                 </React.Fragment>
             </>
         );

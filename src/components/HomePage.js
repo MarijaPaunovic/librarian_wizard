@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+// import deepOrange from '@material-ui/core/colors/deepOrange';
 // import Link from '@material-ui/core/Link';
 import { Link } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 
 // import LibraryForm from './components/LibraryForm';
 
@@ -20,9 +21,9 @@ export class HomePage extends Component {
         // const { values, handleChange } = this.props;
 
         return (
-            <div className='wizard-container'>
+            <Container className='wizard-container homePageContainer'>
                 <div className='card wizard-card'>
-                    <div className={styles.root}>
+                    {/* <div className={styles.root}> */}
 
                         <Typography variant="h2" gutterBottom className='homePageTitle'>
                             Welcome to Library Wizard
@@ -33,8 +34,8 @@ export class HomePage extends Component {
 
                         <Button
                             variant="contained"
-                            color={primary}
-                            className='button-color'
+                            // color={primary}
+                            className='button-color homeButton'
                             
                             // label='Open Library Wizard'
                         // onClick={this.continue}
@@ -56,29 +57,29 @@ export class HomePage extends Component {
                         </Link>
                     </Button>
 
-                    </div>
+                    {/* </div> */}
                 </div>
-            </div>
+            </Container>
         )
     }
 }
 
-const styles = makeStyles(theme => ({
-    button: {
-        margin: theme.spacing(1),
-        justifyContent: 'flex-center'
-    },
-    input: {
-        display: 'none',
-    },
-    root: {
-        width: '100%',
-        maxWidth: 500,
-        alignContent: 'center'
-    },
+// const styles = makeStyles(theme => ({
+//     button: {
+//         margin: theme.spacing(10),
+//         justifyContent: 'flex-center'
+//     },
+//     input: {
+//         display: 'none',
+//     },
+//     root: {
+//         width: '100%',
+//         maxWidth: 500,
+//         alignContent: 'center'
+//     },
 
-}));
+// }));
 
-const primary = deepOrange[500]
+// const primary = deepOrange[500]
 
 export default HomePage

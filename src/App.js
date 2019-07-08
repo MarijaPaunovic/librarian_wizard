@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 
 import Main from './components/Main'
 
-// import Checkout from './components/Checkout/Checkout'
+import Checkout from './components/Checkout/Checkout'
 
 import './App.css';
 
@@ -23,6 +23,7 @@ class App extends Component {
     return (
       <Fragment>
         <Main />
+        {/* <Checkout /> */}
       </Fragment>
     );
   }

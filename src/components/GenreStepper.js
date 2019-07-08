@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+
+// import Grid from '@material-ui/core/Grid';
 
 import BookData from '../data/data.json';
 // import { Typography } from "@material-ui/core";
@@ -11,6 +13,7 @@ import BookData from '../data/data.json';
 
 const Child = ({ id, name, isClicked }) => (
     <>
+    <Box item xs={3} >
         <Button
             key={id}
             variant="outlined"
@@ -19,9 +22,11 @@ const Child = ({ id, name, isClicked }) => (
             // className={isClicked ? `highlight` : ``}
             // onClick={this.handleClick}
             className={isClicked ? 'highlight' : ''}
+            // className='gridSpace'
         >
             {`${name}`}
         </Button>
+        </Box>
     </>
 
 );
@@ -76,8 +81,10 @@ class GenreStepper extends Component {
             // console.log(book, i)
             return (
                 <>
+                
                     <span key={book.id} 
                     onClick={() => this.handleClick(i)}
+                    className='gridContainer'
                     // onClick={this.handleClick}
                     // className={this.state.clicked ? 'highlight' : ''}
                         
@@ -85,6 +92,7 @@ class GenreStepper extends Component {
                     // className={clicked ? this.styles.button1 : this.styles.button2}
 
                     >
+                    
                         <Child 
                         id={book.id} 
                         name={book.name} 
@@ -101,12 +109,15 @@ class GenreStepper extends Component {
                         // className={clicked ? 'highlight' : ''}
                         />
                     </span>
+                    
                 </>
             );
         });
 
         return (
             <React.Fragment>
+
+                <Box container item spacing={3} className='gridSpace'>
                 {/* <div className='wizard-container'>
                     <div className='card wizard-card'>
                         <div className={styles.root}>
@@ -147,6 +158,8 @@ class GenreStepper extends Component {
                         </div>
                     </div>
                 </div> */}
+                </ Box>
+
             </React.Fragment>
         );
     }

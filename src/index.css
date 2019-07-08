@@ -38,15 +38,16 @@ code {
 .wizard-container {
   padding-top: 100px;
   z-index: 3;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .wizard-card {
-  min-height: 600px;
+  min-height: 500px;
   width: 50%;
+  padding: 20px !important;
   margin: 0 auto;
   box-shadow: 0 20px 16px -15px rgba(0, 0, 0, 0.57);
-  text-align: center;
+  /* text-align: center; */
 }
 
 .card {
@@ -87,23 +88,45 @@ code {
   color: green !important;
 }
 
-/****** SUCCESS PAGE *****/
-.successIcon {
-  font-size: 200px;
-  color: green;
-  margin-bottom: 10px;
+.buttons {
+  margin-top: 20px !important;
+  margin-right: 10px !important;
 }
-.success {
-  padding-top: 0 !important;
-  padding-bottom: 80px !important;
+
+.backButton {
+  color: #9a9a9a !important;
+  border: 1px solid #9a9a9a !important;
 }
+
+.MuiGrid-grid-xs-8, MuiGrid-grid-xs-6 {
+  text-align: left !important;
+}
+
+.columnWidth {
+  width: 250px !important;
+}
+
+.MuiSvgIcon-root {
+  width: 1.5em !important;
+  height: 1.5em !important;
+}
+
 /****** HOME PAGE *********/
+.homePageContainer {
+  text-align: center !important;
+}
+
 .homePageButton {
   text-decoration: none;
 }
 
+.homeButton {
+  margin-bottom: 50px !important;
+  text-align: center !important;
+}
+
 .homePageTitle {
-  font-size: 4rem !important;
+  font-size: 2.8rem !important;
   font-weight: 900 !important;
   line-height: 2 !important;
   letter-spacing: -0.00833em;
@@ -111,21 +134,43 @@ code {
   margin: 50px 0 80px 0 !important;
 }
 
+@media (max-width: 632px){
+  .homePageTitle {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.00833em;
+    color: #eb5e28 !important;
+    margin: 50px 0 80px 0 !important;
+  }
+  }
+
 .homePageText {
   margin-bottom: 100px !important;
   font-size: 1.5rem !important;
   font-weight: 300 !important;
   line-height: 2 !important;
-  padding: 0 150px !important;
+  padding: 0 60px !important;
+  text-align: center !important;
 }
 
 /******* GENRE - BUTTON *****/
+.MuiBox-root {
+  display: inline-flex;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 10px 0 10px 1px !important;
+  /* margin-bottom: 20px !important;
+  margin-left: 1px !important; */
+}
+
 .clearButton {
   text-align: right !important;
   color: lightgrey !important;
   font-size: 20px;
   cursor: pointer;
 }
+
 .titlePage {
   color: #9a9a9a !important;
   padding: 20px;
@@ -143,7 +188,40 @@ button {
   margin-right: 400px !important;
 }
 
+.gridContainer {
+  width: 100%;
+  padding: 15px;
+  text-align: 'center';
+  color: #eb5e28 !important;
+}
+
+.gridSpace {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
 /***** Add New *****/
 .MuiCheckbox-colorSecondary.Mui-checked {
   color: #eb5e28 !important;
+}
+.checkBoxContainer {
+  display: flex !important;
+  justify-content:  flex-start !important;
+}
+
+.MuiFormControlLabel-root {
+  display: flex !important;
+}
+
+/****** SUCCESS PAGE *****/
+.successIcon {
+  text-align: center;
+  font-size: 200px;
+  color: green;
+  margin-bottom: 10px;
+}
+.success {
+  text-align: center;
+  padding-top: 0 !important;
+  padding-bottom: 80px !important;
 }

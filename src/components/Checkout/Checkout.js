@@ -118,7 +118,9 @@ export default function Checkout() {
                 <Paper className={classes.paper}>
 
                     <div className='clearButton'>
-                        <i className="material-icons" onClick={closeButton}>clear</i>
+                        <i className="material-icons" 
+                        // onClick={closeButton}
+                        >clear</i>
                     </div>
 
                     <Typography component="h1" variant="h4" align="center">
@@ -164,7 +166,7 @@ export default function Checkout() {
                             )}
                     </React.Fragment>
                 </Paper>
-                <MadeWithLove />
+                {/* <MadeWithLove /> */}
             </main>
         </React.Fragment>
     );
