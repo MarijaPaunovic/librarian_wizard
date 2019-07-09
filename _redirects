@@ -1,0 +1,9 @@
+/*    /index.html   200
+
+[[redirects]]
+  from = "http://book-api-dev.hypetech.xyz"
+  to = "http://book-api-dev.hypetech.xyz"
+  status = 200
+  force = true 
+  headers = {X-From = "Netlify"}
+  signed = "B1tPr0d"
