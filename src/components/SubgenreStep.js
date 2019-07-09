@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
 import BookData from '../data/data.json';
-import { Typography } from "@material-ui/core";
 
 const Child = ({ id, name, isClicked }) => (
     <>
@@ -41,7 +40,7 @@ class SubgenreStep extends Component {
 
     render() {
         const book = BookData.genres;
-        // const { key } = this.props
+        const { key } = this.props
 
         const items = book.forEach((bookObj, key) => {
             bookObj.subgenres.map((book, i) => {
@@ -50,12 +49,10 @@ class SubgenreStep extends Component {
                 return (
                     <>
                         <Box key={id} onClick={() => this.handleClick(i)}>
-                            {/* <Child
+                            <Child
                                 id={id}
                                 name={name}
-                                isClicked={this.state.clicked[i]} /> */}
-                                <Typography>{name}</Typography>
-                                
+                                isClicked={this.state.clicked[i]} />                                
                         </Box> 
                         </>
                 );

@@ -49,7 +49,6 @@ export class Information extends Component {
                 <TextField
                     id="outlined-full-width"
                     label="Author"
-                    // style={{ margin: 8 }}
                     placeholder="Author"
                     onChange={handleChange('author')}
                     defaultValue={values.author}
@@ -67,7 +66,6 @@ export class Information extends Component {
                     label="ISBN"
                     onChange={handleChange('isbn')}
                     defaultValue={values.isbn}
-                    // style={{ margin: 8 }}
                     placeholder="ISBN"
                     fullWidth
                     margin="normal"
@@ -82,7 +80,6 @@ export class Information extends Component {
                 <TextField
                     id="outlined-full-width"
                     label="Publisher"
-                    // style={{ margin: 8 }}
                     placeholder="Publisher"
                     onChange={handleChange('publisher')}
                     defaultValue={values.publisher}

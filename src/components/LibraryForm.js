@@ -87,25 +87,19 @@ class LibraryForm extends Component {
 
     render(props) {
         const steps = ['Genre', 'Subgenre', 'Add new subgenre (Optional)', 'Information (Optional)'];
-        // const classes = useStyles();
-        const { activeStep } = this.state;
-        // const { classes } = this.props;
+         const { activeStep } = this.state;
 
         return (
             <>
                 <React.Fragment>
                 <Container spacing={3} className='wizard-container'>
                 <div className='card wizard-card'>
-                        {/* <Paper 
-                        // className={useStyles.paper}
-                        > */}
-
+ 
                             <div className='clearButton'>
                                 <Link to="/">
                                     <i className="material-icons clearButton">clear</i>
                                 </Link>
                             </div>
-
 
                             <Typography component="h1" variant="h4" align="center" className='titlePage'>
                                 Add book - New book
@@ -170,7 +164,6 @@ class LibraryForm extends Component {
                                         </React.Fragment>
                                     )}
                             </React.Fragment>
-                        {/* </Paper> */}
 
                     </div>
             </Container>
@@ -179,7 +172,5 @@ class LibraryForm extends Component {
         );
     }
 }
-
-
 
 export default LibraryForm

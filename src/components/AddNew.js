@@ -57,22 +57,9 @@ export class AddNew extends Component {
                             onChange={this.handleChange('checkedG')}
                         />
                     </Grid>
-                    {/* <FormControlLabel
-                        control={
-                            <Checkbox
-                                className='checkBoxContainer'
-
-                                checked={this.state.checkedG}
-                                onChange={this.handleChange('checkedG')}
-                                value="checkedG"
-                            />
-                        }
-                        label="Description is required for this subgenre"
-                    /> */}
                </>
         )
     }
 }
-
 
 export default AddNew
